@@ -17,7 +17,7 @@ These benefits are facilitated by:
 Most mathematical symbols in TLA+ have obvious direct counterparts in unicode.
 A few required design decisions:
  1. Most arrow operators (`<-`, `->`, `|->`, etc.) have unicode equivalents of various length; the longest length was chosen as it best matches the displayed width of the ASCII symbol.
- 2. In ASCII TLA+, `<=>` and `\equiv` refer to the same operator which is pretty-printed as `≡`; unicode TLA+ proposes to map `<=>` to `⟺` and `\equiv` to `≡`, although semantically they remain the same symbol.
+ 2. In ASCII TLA+, `<=>` and `\equiv` refer to the same operator which is pretty-printed as `≡`; unicode TLA+ proposes to map `<=>` to `⟺` and `\equiv` to `≡`, although semantically they remain the same operator.
  3. The ASCII TLA+ plus-arrow operator `-+->` as pretty-printed has no real unicode equivalent; the symbol `⇸` was chosen as it best resembles the ASCII symbol itself, although other options are available such as `⥅` (closest to pretty-printed version) and `⍆`.
  4. Some ASCII TLA+ operators such as `..`, `...`, `||`, `??`, `!!`, `:=`, and `::=` arguably don't benefit much from translation into their unicode forms, which directly resemble a contraction of their constituent ASCII symbols into a single code point.
  Their translations have been included in the proposal but suggestions on this topic are welcome.
