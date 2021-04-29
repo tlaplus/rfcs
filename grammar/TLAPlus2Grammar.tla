@@ -146,7 +146,10 @@ TLAPlusGrammar ==
    /\ G.Substitution ::=  
              (Identifier | PrefixOp | InfixOp | PostfixOp ) 
           &  tok("<-") 
-          &  G.Argument  
+          &  G.OpOrExpression 
+
+   /\ G.OpOrExpression ::=
+          PrefixOp | InfixOp | PostfixOp | G.Lambda | G.Expression
 
    /\ G.Argument ::= G.Expression  | G.Opname | G.Lambda
 
