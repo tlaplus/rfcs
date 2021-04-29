@@ -383,7 +383,8 @@ TLAPlusGrammar ==
      |        tok("LET") 
            &  (    G.OperatorDefinition 
                 |  G.FunctionDefinition 
-                |  G.ModuleDefinition)^+ 
+                |  G.ModuleDefinition
+                |  G.Recursive)^+
            &  tok("IN") 
            &  G.Expression
 
