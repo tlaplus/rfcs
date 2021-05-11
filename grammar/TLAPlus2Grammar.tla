@@ -42,7 +42,7 @@ NumberLexeme ==
 
 Number == Tok(NumberLexeme)
 
-ProofStepId == Tok({"<"} & (Numeral^+ | {"*"}) & {">"} & (Letter | Numeral | {"_"})^+)
+ProofStepId == Tok({"<"} & (Numeral^+ | {"*"}) & {">"} & (Letter | Numeral)^+)
 
 BeginStepToken == Tok({"<"} & (Numeral^+ | {"*", "+"}) & {">"} & 
                        (Letter | Numeral)^* & {"."}^* )
