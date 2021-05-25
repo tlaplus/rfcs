@@ -149,8 +149,6 @@ TLAPlusGrammar ==
    /\ G.OpOrExpression ::=
           PrefixOp | InfixOp | PostfixOp | G.Lambda | G.Expression
 
-   /\ G.Argument ::= G.Expression  | G.Opname | G.Lambda
-
    /\ G.Lambda ::= tok("LAMBDA") & CommaList(Identifier) 
                      & tok(":") & G.Expression
 
@@ -161,7 +159,7 @@ TLAPlusGrammar ==
               | Tok({"<<", ">>", "@"} \cup Numeral^+) )
         )^*
 
-   /\ G.OpArgs ::= tok("(") & CommaList(G.Argument) & tok(")")
+   /\ G.OpArgs ::= tok("(") & CommaList(G.OpOrExpression) & tok(")")
 
    /\ G.InstOrSubexprPrefix ::=  
       (    (Nil | ProofStepId & tok("!")) 
