@@ -123,10 +123,7 @@ TLAPlusGrammar ==
 
    /\ G.NonFixLHS ::=   
              Identifier 
-          &  (    Nil 
-              |   tok("(") 
-                & CommaList(Identifier |  G.OpDecl) 
-                & tok(")") ) 
+          &  ( Nil | tok("(") & CommaList(G.OpDecl) & tok(")") )
 
    /\ G.FunctionDefinition ::=   
            Identifier  
