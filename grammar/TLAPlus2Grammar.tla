@@ -154,18 +154,23 @@ TLAPlusGrammar ==
 
    /\ G.OpArgs ::= tok("(") & CommaList(G.OpOrExpression) & tok(")")
 
-   /\ G.InstOrSubexprPrefix ::=  
-      (    (Nil | ProofStepId & tok("!")) 
-        & ( (   Identifier & (Nil | G.OpArgs)
-              | Tok({"<<", ">>", ":"} \cup Numeral^+)
-              | G.OpArgs 
-              | (PrefixOp | PostfixOp) & tok("(") & G.Expression & tok(")")
-              | InfixOp & tok("(") & G.Expression & tok(",") 
-                  & G.Expression & tok(")")
-             )
-            &  tok("!")
-          ) ^*
-      ) \ Nil
+   /\ G.InstOrSubexprPrefix ::=
+           (G.SubexprComponent | ProofStepId) & tok("!")
+        &  ((G.SubexprComponent | G.SubexprTreeNav) & tok("!"))^*
+   
+   /\ G.SubexprComponent ::=
+           Identifier & (Nil | G.OpArgs)
+        |  PrefixOp & tok("(") & G.Expression & tok(")")
+        |  InfixOp & tok("(") & G.Expression & tok(",")
+             & G.Expression & tok(")")
+        |  PostfixOp & tok("(") & G.Expression & tok(")")
+        |  PrefixOp
+        |  InfixOp
+        |  PostfixOp
+
+   /\ G.SubexprTreeNav ::=
+           Tok({"<<", ">>", ":", "@"} \cup Numeral^+)
+        |  G.OpArgs
 
 \* /\ G.InstancePrefix ::= ...
 
@@ -266,9 +271,7 @@ TLAPlusGrammar ==
             Name & (Nil | tok("(") & CommaList(Identifier) & tok(")")) 
                & tok("::") & G.Expression
 
-         |  G.InstOrSubexprPrefix 
-               & (Tok({"<<", ">>", ":"} \cup Numeral^+) | G.OpArgs)
-
+         |  G.InstOrSubexprPrefix & G.SubexprTreeNav
 
          |  G.GeneralIdentifier & (Nil | G.OpArgs)
 
