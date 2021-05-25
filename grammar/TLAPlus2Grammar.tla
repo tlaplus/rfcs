@@ -112,6 +112,7 @@ TLAPlusGrammar ==
                      |  PrefixOp & tok("_")
                      |  tok("_") & InfixOp & tok("_")
                      |  tok("_") & PostfixOp  
+
    /\  G.OperatorDefinition ::=  
             (   G.NonFixLHS 
              |  PrefixOp   & Identifier 
