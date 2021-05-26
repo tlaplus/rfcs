@@ -49,9 +49,15 @@ BeginStepToken == Tok({"<"} & (Numeral^+ | {"*", "+"}) & {">"} &
 
 String == Tok({"\""} & STRING & {"\""})
 
+PrefixOpExceptNegative ==
+  { "~", "\\lnot", "\\neg", "[]", "<>",
+    "DOMAIN",  "ENABLED", "SUBSET", "UNCHANGED", "UNION"}
+
+StandalonePrefixOp ==
+  Tok(PrefixOpExceptNegative \cup {"-."})
+
 PrefixOp  ==  
-  Tok({ "-", "~", "\\lnot", "\\neg", "[]", "<>",
-        "DOMAIN",  "ENABLED", "SUBSET", "UNCHANGED", "UNION"})
+  Tok(PrefixOpExceptNegative \cup {"-"})
 
 InfixOp   ==
   Tok({  "!!",  "#",    "##",   "$",    "$$",   "%",    "%%",  
@@ -109,13 +115,13 @@ TLAPlusGrammar ==
    /\ G.OpDecl ::=      Identifier 
                      |  Identifier & tok("(") & 
                                CommaList(tok("_")) & tok(")")
-                     |  PrefixOp & tok("_")
+                     |  StandalonePrefixOp & tok("_")
                      |  tok("_") & InfixOp & tok("_")
                      |  tok("_") & PostfixOp  
 
    /\  G.OperatorDefinition ::=  
             (   G.NonFixLHS 
-             |  PrefixOp   & Identifier 
+             |  StandalonePrefixOp   & Identifier 
              |  Identifier & InfixOp & Identifier 
              |  Identifier & PostfixOp )
           &  tok("==") 
@@ -142,12 +148,12 @@ TLAPlusGrammar ==
         &  (Nil | tok("WITH") & CommaList(G.Substitution))  
 
    /\ G.Substitution ::=  
-             (Identifier | PrefixOp | InfixOp | PostfixOp ) 
+             (Identifier | StandalonePrefixOp | InfixOp | PostfixOp ) 
           &  tok("<-") 
           &  G.OpOrExpression 
 
    /\ G.OpOrExpression ::=
-          PrefixOp | InfixOp | PostfixOp | G.Lambda | G.Expression
+          StandalonePrefixOp | InfixOp | PostfixOp | G.Lambda | G.Expression
 
    /\ G.Lambda ::= tok("LAMBDA") & CommaList(Identifier) 
                      & tok(":") & G.Expression
@@ -160,11 +166,11 @@ TLAPlusGrammar ==
    
    /\ G.SubexprComponent ::=
            Identifier & (Nil | G.OpArgs)
-        |  PrefixOp & tok("(") & G.Expression & tok(")")
+        |  StandalonePrefixOp & tok("(") & G.Expression & tok(")")
         |  InfixOp & tok("(") & G.Expression & tok(",")
              & G.Expression & tok(")")
         |  PostfixOp & tok("(") & G.Expression & tok(")")
-        |  PrefixOp
+        |  StandalonePrefixOp
         |  InfixOp
         |  PostfixOp
 
