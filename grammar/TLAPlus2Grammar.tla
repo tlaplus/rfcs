@@ -180,9 +180,10 @@ TLAPlusGrammar ==
 
 \* /\ G.InstancePrefix ::= ...
 
-   /\ G.GeneralIdentifier ::= 
-           (G.InstOrSubexprPrefix | Nil) & Identifier 
-         | ProofStepId
+   /\ G.GeneralIdentifier ::=
+           (Nil | G.InstOrSubexprPrefix)
+        &  Identifier
+        &  (Nil | G.OpArgs)
 
 \* /\ G.GeneralIdentifier ::= ...
 \* /\ G.GeneralPrefixOp   ::= ...
@@ -279,7 +280,9 @@ TLAPlusGrammar ==
 
          |  G.InstOrSubexprPrefix & G.SubexprTreeNav
 
-         |  G.GeneralIdentifier & (Nil | G.OpArgs)
+         |  G.GeneralIdentifier
+
+         |  ProofStepId
 
          |  PrefixOp & G.Expression 
 
