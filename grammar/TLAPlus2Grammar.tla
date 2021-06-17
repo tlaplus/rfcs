@@ -165,14 +165,19 @@ TLAPlusGrammar ==
         &  ((G.SubexprComponent | G.SubexprTreeNav) & tok("!"))^*
    
    /\ G.SubexprComponent ::=
-           Identifier & (Nil | G.OpArgs)
-        |  StandalonePrefixOp & tok("(") & G.Expression & tok(")")
-        |  InfixOp & tok("(") & G.Expression & tok(",")
-             & G.Expression & tok(")")
-        |  PostfixOp & tok("(") & G.Expression & tok(")")
+           G.BoundOp
+        |  G.BoundNonfixOp
         |  StandalonePrefixOp
         |  InfixOp
         |  PostfixOp
+
+   /\ G.BoundOp ::= Identifier & (Nil | G.OpArgs)
+
+   /\ G.BoundNonfixOp ::=
+           StandalonePrefixOp & tok("(") & G.Expression & tok(")")
+        |  InfixOp & tok("(") & G.Expression & tok(",")
+             & G.Expression & tok(")")
+        |  PostfixOp & tok("(") & G.Expression & tok(")")
 
    /\ G.SubexprTreeNav ::=
            Tok({"<<", ">>", ":", "@"} \cup Numeral^+)
@@ -182,8 +187,7 @@ TLAPlusGrammar ==
 
    /\ G.GeneralIdentifier ::=
            (Nil | G.InstOrSubexprPrefix)
-        &  Identifier
-        &  (Nil | G.OpArgs)
+        &  (G.BoundOp | G.BoundNonfixOp)
 
 \* /\ G.GeneralIdentifier ::= ...
 \* /\ G.GeneralPrefixOp   ::= ...
@@ -269,7 +273,6 @@ TLAPlusGrammar ==
                                   & CommaList(G.OpOrExpression | 
                                                 tok("MODULE") & Name ))
                       ) \ Nil
-
 
    /\ G.Expression ::= 
 
