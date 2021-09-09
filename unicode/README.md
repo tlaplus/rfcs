@@ -31,9 +31,9 @@ A few required design decisions:
  5. The `\bullet` operator translates to the Unicode black circle (U+25CF) symbol `●` instead of the Unicode bullet (U+2022) symbol `•` to avoid visual collision with the `\cdot` Unicode symbol (U+00B7) `·`.
  6. Some operators such as `\AA`, `\EE`, `\^*`, and `^#` have no clear Unicode translation.
  
- ## Drawbacks
+ ## Challenges
 
-Mixing in Unicode is not without its drawbacks.
+Mixing in Unicode is not without its challenges.
 
 First, conjunction & disjunction lists are a very important part of TLA+ that depend upon vertical alignment.
 One issue with this is that rewriting ASCII symbols into their Unicode equivalents (for example, `\forall` into `∀`) changes the vertical alignment of everything after them in the line.
@@ -76,3 +76,10 @@ One difficulty commonly reported by students of TLA+ is that many learning mater
 Since it is difficult to directly type Unicode symbols, ASCII TLA+ is likely to remain the dominant input form far into the future.
 If Unicode TLA+ becomes popular, many example specs will not be in a form which is easily copied by TLA+ newcomers.
 This could make the language more difficult to learn.
+
+## Prior Art
+
+In 2017 Ron Pressler created a set of changes intended to add Unicode support to SANY; this work can be viewed [here](https://github.com/pron/tlaplus/tree/unicode-presentation-2/tlatools/src/tla2unicode).
+This was at one point integrated into a beta toolbox release (along with real-time rewriting of ASCII symbols into their Unicode counterparts!) but was reverted after it caused various issues; see release announcement discussion [here](https://groups.google.com/g/tlaplus/c/YEWzqRqV8Nc/m/mKhyim0wCQAJ) and prior general discussion of Unicode in TLA+ [here](https://groups.google.com/g/tlaplus/c/9ZKemfayRDk/m/Ii5ugPtHIAAJ).
+
+
