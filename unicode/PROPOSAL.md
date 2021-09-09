@@ -35,7 +35,7 @@ A few required design decisions:
 Mixing in unicode is not without its drawbacks.
 
 First, conjunction & disjunction lists are a very important part of TLA+ that depend upon vertical alignment.
-There are two issues with this: one, rewriting ASCII symbols into their unicode equivalents (for example, `\forall` into `∀`) changes the vertical alignment of everything after them in the line.
+One issue with this is that rewriting ASCII symbols into their unicode equivalents (for example, `\forall` into `∀`) changes the vertical alignment of everything after them in the line.
 So rewriting this:
 ```tla
 op == \forall n \in Nat : /\ n > 0
@@ -71,7 +71,7 @@ op ==
     /\ B
 ```
 The final issue has to do with ease of learning TLA+.
-One difficulty commonly reported by students of TLA+ is that many learning materials are presented in the "pretty printed" form, while they are trying to learn how to write TLA+ the ASCII form.
+One difficulty commonly reported by students of TLA+ is that many learning materials are presented in the "pretty printed" form, while they are trying to learn how to write TLA+ in the ASCII form.
 Since it is difficult to directly type unicode symbols, ASCII TLA+ is likely to remain the dominant input form far into the future.
 If unicode TLA+ becomes popular, many example specs will not be in a form which is easily copied by TLA+ newcomers.
 This could make the language more difficult to learn.
