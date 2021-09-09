@@ -15,8 +15,6 @@ label_as,::,∷,U+2237
 bullet_conj,/\,∧,U+2227
 bullet_disj,\/,∨,U+2228
 lnot,~;\lnot;\neg,¬,U+00AC
-lnot,\lnot,¬,U+00AC
-lnot,\neg,¬,U+00AC
 always,[],□,U+25A1
 eventually,<>,⋄,U+22C4
 implies,=>,⟹,U+27F9
