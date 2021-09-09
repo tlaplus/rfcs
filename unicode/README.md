@@ -17,7 +17,7 @@ These benefits are facilitated by:
 The proposed mappings between ASCII and Unicode symbols are found in the `tla-unicode.csv` file in this directory.
 There are a number of cases where multiple ASCII symbols map to the same Unicode symbol, for example `<=`, `=<`, and `\leq` all mapping to `≤`.
 In these cases the translation from ASCII to Unicode is unambiguous, but the translation back is not.
-Thus each ASCII symbol is given a `priority`, where the symbol with the lowest numerical `priority` value is the one chosen when translating from Unicode back to ASCII.
+Each ASCII symbol is listed in a semicolon-separated list where the first element is the one to use when translating back to ASCII.
 In the `≤` case, `<=` is given priority.
 
 Most mathematical symbols in TLA+ have obvious direct counterparts in unicode.
