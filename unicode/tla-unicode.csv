@@ -5,7 +5,7 @@ gets,1,<-,⟵,U+27F5
 forall,1,\A,∀,U+2200
 forall,2,\forall,∀,U+2200
 exists,1,\E,∃,U+2203
-exists,1,\exists,∃,U+2203
+exists,2,\exists,∃,U+2203
 all_map_to,1,|->,⟼,U+27FC
 maps_to,1,->,⟶,U+27F6
 langle_bracket,1,<<,〈,U+3008
@@ -95,7 +95,7 @@ sqcap,1,\sqcap,⊓,U+2293
 sqcup,1,\sqcup,⊔,U+2294
 uplus,1,\uplus,⊎,U+228E
 times,1,\X,×,U+00D7
-times,1,\times,×,U+00D7
+times,2,\times,×,U+00D7
 wr,1,\wr,≀,U+2240
 cdot,1,\cdot,⋅,U+22C5
 sup_plus,1,^+,⁺,U+207A
