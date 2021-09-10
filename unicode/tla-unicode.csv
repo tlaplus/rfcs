@@ -12,8 +12,6 @@ rangle_bracket_sub,>>_,〉_,U+3009;U+005F
 case_box,[],□,U+25A1
 case_arrow,->,⟶,U+27F6
 label_as,::,∷,U+2237
-bullet_conj,/\,∧,U+2227
-bullet_disj,\/,∨,U+2228
 lnot,~;\lnot;\neg,¬,U+00AC
 always,[],□,U+25A1
 eventually,<>,⋄,U+22C4
@@ -41,7 +39,7 @@ gg,\gg,≫,U+226B
 ll,\ll,≪,U+226A
 in,\in,∈,U+2208
 notin,\notin,∉,U+2209
-prec,\prev,≺,U+227A
+prec,\prec,≺,U+227A
 succ,\succ,≻,U+227B
 preceq,\preceq,⪯,U+2AAF
 succeq,\succeq,⪰,U+2AB0
