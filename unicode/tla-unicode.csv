@@ -19,7 +19,7 @@ implies,=>,⇒,U+21D2
 plus_arrow,-+->,⇸,U+21F8
 equiv,\equiv,≡,U+2261
 iff,<=>,⇔,U+21D4
-leads_to,~>,⇝,U+21DD
+leads_to,~>,↝,U+219D
 land,/\;\land,∧,U+2227
 lor,\/;\lor,∨,U+2228
 assign,:=,≔,U+2254

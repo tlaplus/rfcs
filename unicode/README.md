@@ -30,7 +30,7 @@ A few required design decisions:
  In TLA+, the square `[]` is used both as the temporal "always" operator and as a separator in `CASE` statements.
  The small square was chosen for both.
  1. The temporal "leads to" operator `~>` could be translated to either `↝` (U+2198) or `⇝` (U+21DD).
- The latter was chosen as it is more visually distinctive.
+ The former was chosen as it is more visually distinctive.
  1. In ASCII TLA+, `<=>` and `\equiv` refer to the same operator which is pretty-printed as `≡`; Unicode TLA+ proposes to map `<=>` to `⇔` and `\equiv` to `≡`, although semantically they remain the same operator.
  1. The ASCII TLA+ plus-arrow operator `-+->` as pretty-printed has no real Unicode equivalent; the symbol `⇸` was chosen as it best resembles the ASCII symbol itself, although other options are available such as `⥅` (closest to pretty-printed version) and `⍆`.
  1. Some ASCII TLA+ operators such as `..`, `...`, `||`, `??`, `!!`, `:=`, and `::=` arguably don't benefit much from translation into their Unicode forms, which directly resemble a contraction of their constituent ASCII symbols into a single code point.
