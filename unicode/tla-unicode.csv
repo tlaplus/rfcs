@@ -78,3 +78,6 @@ times,\X;\times,×,U+00D7
 wr,\wr,≀,U+2240
 cdot,\cdot,⋅,U+22C5
 sup_plus,^+,⁺,U+207A
+nat_number_set,Nat,ℕ,U+2115
+int_number_set,Int,ℤ,U+2124
+real_number_set,Real,ℝ,U+211D
