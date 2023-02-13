@@ -43,11 +43,11 @@ NumberLexeme ==
 Number == Tok(NumberLexeme)
 
 \* Modified by ahelwer on May 11, 2021
-\* Removed _ from possible characters in proof step ID name
-ProofStepId == Tok({"<"} & (Numeral^+ | {"*"}) & {">"} & (Letter | Numeral)^+)
+\* Proof step names can be any valid NameChar
+ProofStepId == Tok({"<"} & (Numeral^+ | {"*"}) & {">"} & NameChar^+)
 
 BeginStepToken == Tok({"<"} & (Numeral^+ | {"*", "+"}) & {">"} & 
-                       (Letter | Numeral)^* & {"."}^* )
+                       NameChar^* & {"."}^* )
 
 String == Tok({"\""} & STRING & {"\""})
 
