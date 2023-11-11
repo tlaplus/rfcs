@@ -89,4 +89,12 @@ This could make the language more difficult to learn.
 In 2017 Ron Pressler created a set of changes intended to add Unicode support to SANY; this work can be viewed [here](https://github.com/pron/tlaplus/tree/unicode-presentation-2/tlatools/src/tla2unicode).
 This was at one point integrated into a beta toolbox release (along with real-time rewriting of ASCII symbols into their Unicode counterparts!) but was reverted after it caused various issues; see release announcement discussion [here](https://groups.google.com/g/tlaplus/c/YEWzqRqV8Nc/m/mKhyim0wCQAJ) and prior general discussion of Unicode in TLA+ [here](https://groups.google.com/g/tlaplus/c/9ZKemfayRDk/m/Ii5ugPtHIAAJ).
 
+## Revisions
+
+- In November 2023 the unicode diamond "eventually" operator was changed from |⋄|Diamond Operator|U+22C4|Mathematical Operators Block| to |◇|White Diamond|U+25C7|Geometric Shapes Block|.
+There were two main reasons for the change.
+First, some fonts (for example, the default font for VS Code on macOS) rendered the U+22C4 diamond as a very tiny dot which was not useful for legibility.
+Second, the "eventually" diamond operator is often used next to the "always" box operator, and the box operator is |□|White Square|U+25A1|Geometric Shapes Block|.
+Pulling the two operators from the same unicode block means they are often more stylistically similar across different fonts; `□◇` looks better than `□⋄`.
+See this issue for more info: https://github.com/tlaplus/tlaplus-standard/issues/5
 
