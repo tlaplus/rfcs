@@ -18,11 +18,12 @@ These benefits are facilitated by:
 
 The [TLAUC](https://github.com/tlaplus-community/tlauc) command-line tool provides bidirectional ASCII/Unicode spec conversion.
 
-Language tooling accepting Unicode TLA<sup>+</sup>:
+Language tooling support for Unicode TLA<sup>+</sup>:
  - [x] [tree-sitter-tlaplus](https://github.com/tlaplus-community/tree-sitter-tlaplus) (since creation)
  - [x] SANY (merged in [this PR](https://github.com/tlaplus/tlaplus/pull/896))
  - [x] TLC (merged in [this PR](https://github.com/tlaplus/tlaplus/pull/896))
- - [ ] PlusCal (pending in [this PR](https://github.com/tlaplus/tlaplus/pull/911))
+ - [x] PlusCal accepts Unicode (merged in [this PR](https://github.com/tlaplus/tlaplus/pull/911))
+ - [ ] PlusCal emits Unicode
  - [ ] TLAPM
  - [ ] tla2tex
  - [ ] Apalache
@@ -30,8 +31,8 @@ Language tooling accepting Unicode TLA<sup>+</sup>:
 Editors with as-you-type Unicode translation plugins:
  - [x] [Neovim](https://github.com/tlaplus-community/tlaplus-nvim-plugin)
  - [x] [Emacs](https://github.com/bugarela/tla-input)
- - [ ] VS Code (being worked on by Tatiana Racheva)
- - [ ] TLA<sup>+</sup> Eclipse Toolbox (being worked on by Jones Martins)
+ - [ ] VS Code
+ - [ ] TLA<sup>+</sup> Eclipse Toolbox
 
 ## Symbol Translation Decisions
 
