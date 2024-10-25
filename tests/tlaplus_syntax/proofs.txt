@@ -183,8 +183,10 @@ Proof by QED with implicit step level
 ===============================|||
 
 ---- MODULE Test ----
-COROLLARY TRUE
-PROOF <1>a QED BY <1>a, <*>b
+THEOREM TRUE
+PROOF
+  <1>a TRUE
+  <1>b QED BY <*>a
 ====
 
 -------------------------------|||
@@ -192,9 +194,9 @@ PROOF <1>a QED BY <1>a, <*>b
 (source_file (module (header_line) (identifier) (header_line)
   (theorem (boolean)
     (non_terminal_proof
+      (proof_step (proof_step_id (level) (name)) (suffices_proof_step (boolean)))
       (qed_step (proof_step_id (level) (name))
         (terminal_proof (use_body (use_body_expr
-          (proof_step_ref (level) (name))
           (proof_step_ref (level) (name))
         )))
       )
@@ -209,11 +211,11 @@ Extra QED
 
 ---- MODULE Test ----
 THEOREM x == TRUE
-<*> P
+<1> P
   <+> Q
   <*> QED
   <*> QED
-<*> QED
+<1> QED
 ====
 
 -------------------------------|||
@@ -531,26 +533,75 @@ COROLLARY TRUE
   )
 (double_line)))
 
+===============================|||
+Implicit Proof Steps With Names
+===============================|||
+
+---- MODULE Test ----
+THEOREM TRUE
+<*>abc 1
+<*>def QED
+====
+
+-------------------------------|||
+
+(source_file (module (header_line) (identifier) (header_line)
+  (theorem (boolean)
+    (non_terminal_proof
+      (proof_step (proof_step_id (level) (name)) (suffices_proof_step (nat_number)))
+      (qed_step (proof_step_id (level) (name)))
+    )
+  )
+(double_line)))
+
+===============================|||
+Plus Proof Step With Name
+===============================|||
+
+---- MODULE Test ----
+THEOREM TRUE
+<1>abc 1
+  <+>def 2
+  <2>ghi QED
+<1>jkl QED
+====
+
+-------------------------------|||
+
+(source_file (module (header_line) (identifier) (header_line)
+  (theorem (boolean)
+    (non_terminal_proof
+      (proof_step (proof_step_id (level) (name)) (suffices_proof_step (nat_number)
+        (non_terminal_proof
+          (proof_step (proof_step_id (level) (name)) (suffices_proof_step (nat_number)))
+          (qed_step (proof_step_id (level) (name)))
+        )
+      ))
+      (qed_step (proof_step_id (level) (name)))
+    )
+  )
+(double_line)))
+
 ==============================|||
 Proof Containing Jlist
 ==============================|||
 
 ---- MODULE Test ----
 THEOREM TRUE
-<*>a1a...
+<*>
   /\ 1
   /\ \/ 2
-   <+>b2b... WITNESS
+   <+> WITNESS
      \/ 3
      \/ /\ 4,
      /\ \/ 5
      /\ 6
-   <*>c3c... QED BY
+   <*> QED BY
      /\ 7
      /\ \/ 8,
      \/ /\ 9
      \/ 10
-<*>d4d... QED BY
+<*> QED BY
   \/ 11
   \/ /\ 12,
   /\ \/ 13
@@ -600,6 +651,44 @@ THEOREM TRUE
         (conj_item (bullet_conj) (nat_number))
       )
     ))))
+  ))
+(double_line)))
+
+
+==============================|||
+Proof Level Change Terminates Jlist
+==============================|||
+
+---- MODULE Test ----
+THEOREM TRUE
+<*> /\ 1
+    /\ 2
+      <+> QED BY
+        \/ 1
+        \/ 2
+          <*> QED
+====
+
+------------------------------|||
+
+
+(source_file (module (header_line) (identifier) (header_line)
+  (theorem (boolean) (non_terminal_proof
+    (proof_step (proof_step_id (level) (name)) (suffices_proof_step
+      (conj_list
+        (conj_item (bullet_conj) (nat_number))
+        (conj_item (bullet_conj) (nat_number))
+      )
+      (non_terminal_proof
+        (qed_step (proof_step_id (level) (name)) (terminal_proof (use_body (use_body_expr
+          (disj_list
+            (disj_item (bullet_disj) (nat_number))
+            (disj_item (bullet_disj) (nat_number))
+          )
+        ))))
+      )
+    ))
+    (qed_step (proof_step_id (level) (name)))
   ))
 (double_line)))
 
