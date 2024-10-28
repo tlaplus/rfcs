@@ -802,7 +802,7 @@ op ≜ {
 (double_line)))
 
 =============|||
-Unicode Junct Tokens as Higher-Level Parameters (TSTLA#GH96)
+Unicode Junct Tokens as Higher-Level Parameters (GH TSTLA #96)
 =============|||
 
 ---- MODULE Test ----
@@ -819,6 +819,8 @@ op == op(∨, x, ∨)
       parameter: (identifier_ref)
       parameter: (infix_op_symbol (land))
     )
+  )
+  (operator_definition name: (identifier) (def_eq) definition:
     (bound_op name: (identifier_ref)
       parameter: (infix_op_symbol (lor))
       parameter: (identifier_ref)
