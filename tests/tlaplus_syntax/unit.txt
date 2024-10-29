@@ -187,17 +187,6 @@ LOCAL ASSUME x
 -------------------------------|||
 
 =============|||
-Invalid LOCAL Declaration of ASSUME
-:error
-=============|||
-
----- MODULE Test ----
-LOCAL ASSUME x
-====
-
--------------------------------|||
-
-=============|||
 Invalid LOCAL Declaration of USE
 :error
 =============|||
