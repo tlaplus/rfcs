@@ -118,5 +118,5 @@ There were two main reasons for the change.
 First, some fonts (for example, the default font for VS Code on macOS) rendered the U+22C4 diamond as a very tiny dot which was not useful for legibility.
 Second, the "eventually" diamond operator is often used next to the "always" box operator, and the box operator is |□|White Square|U+25A1|Geometric Shapes Block|.
 Pulling the two operators from the same unicode block means they are often more stylistically similar across different fonts; `□◇` looks better than `□⋄`.
-See this issue for more info: https://github.com/tlaplus/tlaplus-standard/issues/5
+See this issue for more info: https://github.com/tlaplus/rfcs/issues/22
 
