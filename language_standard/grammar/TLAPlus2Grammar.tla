@@ -35,7 +35,8 @@ IdentifierOrTuple  ==
 
 NumberLexeme == 
          Numeral^+ 
-      |  (Numeral^* & {"."} & Numeral^+) 
+         \* changed Numeral^* to Numeral^+ on Sep 22, 2026: require leading zero
+      |  (Numeral^+ & {"."} & Numeral^+) 
       |  {"\\b","\\B" } & OneOf("01")^+ 
       |  {"\\o", "\\O"} & OneOf("01234567")^+ 
       |  {"\\h", "\\H"} & OneOf("0123456789abcdefABCDEF")^+ 
